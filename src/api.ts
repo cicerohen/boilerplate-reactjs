@@ -5,7 +5,16 @@ export const API_URL = process.env.REACT_APP_MARVEL_API_BASE;
 export const PUBLIC_KEY = process.env.REACT_APP_MARVEL_PUBLIC_KEY;
 export const PRIVATE_KEY = process.env.REACT_APP_MARVEL_PRIVATE_KEY;
 
-export const fetchApi = async (resource = "") => {
+export const defaultHeaders = {
+  "Content-Type": "application/json",
+};
+
+export const fetchApi = async (
+  resource = "",
+  method = "GET",
+  body = null,
+  options = {}
+) => {
   const ts = new Date().getTime();
   const hash = md5(`${ts}${PRIVATE_KEY}${PUBLIC_KEY}`);
   const url = `${API_URL}/${resource}`;
@@ -17,5 +26,10 @@ export const fetchApi = async (resource = "") => {
       hash: hash,
     },
   });
-  return fetch(uri);
+  return fetch(uri, {
+    method,
+    body,
+    headers: defaultHeaders,
+    ...options,
+  });
 };
