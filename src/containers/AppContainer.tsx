@@ -1,46 +1,38 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import HomeContainer from "./pages/HomeContainer";
-import CharactersPageContainer from "./pages/CharactersPageContainer";
-import ComicsPageContainer from "./pages/ComicsPageContainer";
-import CreatorsPageContainer from "./pages/CreatorsPageContainer";
-import EventsPageContainer from "./pages/EventsPageContainer";
-import SeriesPageContainer from "./pages/SeriesPageContainer";
-import StoriesPageContainer from "./pages/StoriesPageContainer";
-
-import ThemeProvider from "../contexts/Theme/ThemeProvider";
+import { HomeViewContainer } from "./views/HomeViewContainer";
+import { CharactersViewContainer } from "./views/CharactersViewContainer";
+import { ComicsViewContainer } from "./views/ComicsViewContainer";
+import { EventsViewContainer } from "./views/EventsViewContainer";
+import { SeriesViewContainer } from "./views/SeriesViewContainer";
+import { StoriesViewContainer } from "./views/StoriesViewContainer";
 
 import { routes } from "../router.settings";
 
 const AppContainer = () => {
   return (
-    <ThemeProvider>
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <HomeContainer />
-          </Route>
-          <Route path={routes.CHARACTERS.path}>
-            <CharactersPageContainer />
-          </Route>
-          <Route path={routes.COMICS.path}>
-            <ComicsPageContainer />
-          </Route>
-          <Route path={routes.CREATORS.path}>
-            <CreatorsPageContainer />
-          </Route>
-          <Route path={routes.EVENTS.path}>
-            <EventsPageContainer />
-          </Route>
-          <Route path={routes.SERIES.path}>
-            <SeriesPageContainer />
-          </Route>
-          <Route path={routes.STORIES.path}>
-            <StoriesPageContainer />
-          </Route>
-        </Switch>
-      </Router>
-    </ThemeProvider>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <HomeViewContainer />
+        </Route>
+        <Route exact path={routes.CHARACTERS.path}>
+          <CharactersViewContainer />
+        </Route>
+        <Route exact path={routes.COMICS.path}>
+          <ComicsViewContainer />
+        </Route>
+        <Route exact path={routes.EVENTS.path}>
+          <EventsViewContainer />
+        </Route>
+        <Route exact path={routes.SERIES.path}>
+          <SeriesViewContainer />
+        </Route>
+        <Route exact path={routes.STORIES.path}>
+          <StoriesViewContainer />
+        </Route>
+      </Switch>
+    </Router>
   );
 };
 

@@ -7,7 +7,7 @@ This is a simple app bootstrapped with [CRA](https://github.com/facebook/create-
 ## Tooling
 
 - [ReactJS](https://reactjs.org/)
-- [Material UI](https://material-ui.com/)
+- [TailwindCSS]()
 - [Jest](https://jestjs.io/)
 - [Testing Library](https://testing-library.com/docs/react-testing-library/intro)
 - [TypeScript](https://www.typescriptlang.org/)
@@ -18,7 +18,6 @@ This is a simple app bootstrapped with [CRA](https://github.com/facebook/create-
 
 Go to https://developer.marvel.com to create your account and
 **activate it** with the link sent to your email.
-
 
 Create a .env.local file on the **root folder** of the project and put your API keys into it (https://developer.marvel.com/account)
 

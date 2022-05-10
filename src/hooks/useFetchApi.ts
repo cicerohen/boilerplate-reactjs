@@ -4,14 +4,14 @@ import { fetchApi } from "../api";
 
 const AbortController = window.AbortController;
 
-const useFetchApi = (resouce: string, method = "GET", options = {}) => {
+export const useFetchApi = (resouce: string, method = "GET", options = {}) => {
   const [isFetching, setIsFetching] = useState(false);
   const [data, setData] = useState(null);
   const [response, setResponse] = useState(null);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<Error | null>(null);
   const controller = new AbortController();
 
-  const startFetch = async (body: any) => {
+  const startFetch = async (body?: any) => {
     setIsFetching(true);
     setError(null);
     setResponse(null);
@@ -32,7 +32,7 @@ const useFetchApi = (resouce: string, method = "GET", options = {}) => {
 
       setData(res);
     } catch (err) {
-      setError(err);
+      setError(err as Error);
     } finally {
       setIsFetching(false);
     }
@@ -55,5 +55,3 @@ const useFetchApi = (resouce: string, method = "GET", options = {}) => {
     cancelFetch,
   };
 };
-
-export default useFetchApi;
